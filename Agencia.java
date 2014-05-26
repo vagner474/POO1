@@ -6,21 +6,26 @@ public class Agencia {
     private int numero;
     private Banco banco;
     private List<ContaIF> contas = new ArrayList<ContaIF>();
+    private List<Cliente> clientes = new ArrayList<Cliente>();
 
-    public void cadastrarConta(ContaIF conta) {
-        contas.add(conta);
+    public void cadastrarCliente(Cliente cliente) {
+        clientes.add(cliente);
     }
     
-    public ContaIF pesquisarContaPorNumero(int numero) {
+    public Cliente pesquisarContaPorCPF(String cpf) {
         
-        for (ContaIF conta : contas) {
+        for (Cliente cliente : clientes) {
             
-            if (conta.getNumero() == numero) {
-                return conta;
+            if (cliente.getCpf().equals(cpf)) {
+                return cliente;
             }
         }
         
-        throw new RuntimeException("Conta n√£o encontrada: " + numero);
+        throw new RuntimeException("Cliente n„o encontrado: " + cpf);
+    }
+    
+    public void cadastrarConta(ContaIF conta) {
+        contas.add(conta);
     }
 
     public void setNumero(int numero) {
